@@ -3,18 +3,18 @@ import json
 import pandas as pd
 from pprint import pprint
 
-df = pd.read_excel('/Users/skylerchak/Work/UM/Final_Program/Code/people_relation_extract/data/人物关系表_N1500.xlsx')
-relations = list(df['关系'].unique())
+df = pd.read_excel('/Users/skylerchak/Work/UM/Final_Program/data/人物关系表_N1500.xlsx')
+relations = list(df['rel'].unique())
 # relations.remove('unknown')
 relation_dict = {}
 relation_dict.update(dict(zip(relations, range(0, len(relations)))))
 
-with open('/Users/skylerchak/Work/UM/Final_Program/Code/people_relation_extract/data/rel_dict.json', 'w', encoding='utf-8') as h:
+with open('/Users/skylerchak/Work/UM/Final_Program/data/rel_dict.json', 'w', encoding='utf-8') as h:
     h.write(json.dumps(relation_dict, ensure_ascii=False, indent=2))
 
-print('总数: %s' % len(df))
-pprint(df['关系'].value_counts())
-df['rel'] = df['关系'].apply(lambda x: relation_dict[x])
+print('Amount: %s' % len(df))
+pprint(df['rel'].value_counts())
+df['rel'] = df['rel'].apply(lambda x: relation_dict[x])
 
 texts = []
 for per1, per2, text in zip(df['人物1'].tolist(), df['人物2'].tolist(), df['文本'].tolist()):
@@ -23,7 +23,6 @@ for per1, per2, text in zip(df['人物1'].tolist(), df['人物2'].tolist(), df['
 
 df['text'] = texts
 
-# df = df.iloc[:100, :] # 取前n条数据进行模型方面的测试
 
 train_df = df.sample(frac=0.8, random_state=1024)
 test_df = df.drop(train_df.index)
