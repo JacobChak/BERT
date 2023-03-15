@@ -1,0 +1,2 @@
+To run the model training and model prediction scripts of this project, you need to prepare the model data of the Chinese version of BERT.
+The download URL is: https://github.com/google-research/bert/blob/master/multilingual.md.
