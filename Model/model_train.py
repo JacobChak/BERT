@@ -86,7 +86,7 @@ num_train_steps = math.ceil(num_train_samples/batch_size)
 num_test_steps = math.ceil(num_test_samples/batch_size)
 
 early_stopping = EarlyStopping(monitor='val_accuracy', patience=5, mode='max')
-filepath="/content/drive/MyDrive/People_2/people_relation_extract/models/per-rel-{epoch:02d}-{val_accuracy:.4f}.h5"
+filepath="/content/drive/MyDrive/People_2/per-rel-{epoch:02d}-{val_accuracy:.4f}.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_accuracy', verbose=1, save_best_only=True,mode='max')
 
 history = model.fit(x_train, y_train, validation_data=(x_test, y_test),
@@ -100,7 +100,7 @@ print('Test loss:', loss)
 print('Test accuracy:', accuracy)
 
 # Read the relationship correspondence table
-with open('/content/drive/MyDrive/People_2/people_relation_extract/data/rel_dict.json', 'r', encoding='utf-8') as f:
+with open('/content/drive/MyDrive/People_2/data/rel_dict.json', 'r', encoding='utf-8') as f:
     label_id_dict = json.loads(f.read())
 
 sorted_label_id_dict = sorted(label_id_dict.items(), key=itemgetter(1))
@@ -122,8 +122,8 @@ epochs = len(history.history['accuracy'])
 plt.plot(range(epochs), history.history['accuracy'], label='acc')
 plt.plot(range(epochs), history.history['val_accuracy'], label='val_acc')
 plt.legend()
-plt.savefig("/content/drive/MyDrive/People_2/people_relation_extract/loss_acc.png")
-plt.savefig('/content/drive/MyDrive/People_2/people_relation_extract/loss_acc.eps',dpi=800,format = 'eps')
+plt.savefig("/content/drive/MyDrive/People_2/loss_acc.png")
+plt.savefig('/content/drive/MyDrive/People_2/loss_acc.eps',dpi=800,format = 'eps')
 
 # Print the ROC curve and AUC
 
@@ -145,5 +145,5 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('True Positive Rate')
 plt.title('Receiver operating characteristic')
 plt.legend(loc="lower right")
-plt.savefig("/content/drive/MyDrive/People_2/people_relation_extract/ROC_AUC.png")
-plt.savefig('/content/drive/MyDrive/People_2/people_relation_extract/ROC_AUC.eps',dpi=800,format = 'eps')
+plt.savefig("/content/drive/MyDrive/People_2/ROC_AUC.png")
+plt.savefig('/content/drive/MyDrive/People_2/ROC_AUC.eps',dpi=800,format = 'eps')
