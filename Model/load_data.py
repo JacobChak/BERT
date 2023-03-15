@@ -19,11 +19,11 @@ def read_txt_file(file_path):
 
 # 获取训练数据和测试数据，格式为pandas的DataFrame
 def get_train_test_pd():
-    file_path = '/content/drive/MyDrive/People_2/people_relation_extract/data/train.txt'
+    file_path = '/content/drive/MyDrive/People_2/data/train.txt'
     labels, texts = read_txt_file(file_path)
     train_df = pd.DataFrame({'label': labels, 'text': texts})
 
-    file_path = '/content/drive/MyDrive/People_2/people_relation_extract/data/test.txt'
+    file_path = '/content/drive/MyDrive/People_2/data/test.txt'
     labels, texts = read_txt_file(file_path)
     test_df = pd.DataFrame({'label': labels, 'text': texts})
 
