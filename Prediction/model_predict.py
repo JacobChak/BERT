@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 模型预测
+# Model Prediction
 
 import os, json
 import numpy as np
@@ -7,7 +7,7 @@ from bert.extract_feature import BertVector
 from keras.models import load_model
 from att import Attention
 
-# 加载训练效果最好的模型
+# Load the best trained model
 model_dir = './models'
 files = os.listdir(model_dir)
 models_path = [os.path.join(model_dir, _) for _ in files]
@@ -46,8 +46,8 @@ with open('data/rel_dict.json', 'r', encoding='utf-8') as f:
     rel_dict = json.load(f)
 
 id_rel_dict = {v:k for k,v in rel_dict.items()}
-print('原文: %s' % text1)
-print('预测人物关系: %s' % id_rel_dict[y])
+print('文本: %s' % text1)
+print('罪犯关系: %s' % id_rel_dict[y])
 
 # '''single role(test)'''
 # per, doc = text1.split('#')
@@ -68,6 +68,6 @@ print('预测人物关系: %s' % id_rel_dict[y])
 #     rel_dict = json.load(f)
 
 # id_rel_dict = {v:k for k,v in rel_dict.items()}
-# print('原文: %s' % text1)
-# print('预测人物角色: %s' % id_rel_dict[y])
+# print('文本: %s' % text1)
+# print('罪犯关系: %s' % id_rel_dict[y])
 
