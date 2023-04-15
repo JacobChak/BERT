@@ -7,6 +7,7 @@ Models have been built using deep learning frameworks such as TensorFlow and pre
 
 ![image](https://github.com/JacobChak/MDIP/blob/main/IMG/workflow.png)
 
+
+
 Train the model: The model will feature the relationship between two defendants in the text (By BERT) and classify the text according to the relationship, which will be divided into three categories.
 
-![image](https://github.com/JacobChak/MDIP/blob/main/IMG/Screenshot%202023-04-15%20at%203.50.28%20PM.png)
